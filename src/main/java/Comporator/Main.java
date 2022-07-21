@@ -2,14 +2,12 @@ package Comporator;
 
 import org.apache.commons.lang3.builder.CompareToBuilder;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        List<Personal> personals = new java.util.ArrayList<>(List.of(
+        List<Personal> personals = new ArrayList<>(List.of(
                 Personal.of("Вася", 25, 140000, 18),
                 Personal.of("Дима", 28, 80000, 10),
                 Personal.of("Женя", 35, 150000, 20),
@@ -19,9 +17,20 @@ public class Main {
 
         ));
 
-        Comparator<Personal> comparatorByAge = (o1, o2) -> new CompareToBuilder().append(o1.getAge(), o2.getAge()).toComparison();
+        Comparator<Personal> comparatorByAge = Comparator.comparing(Personal -> Personal.getAge());
         Comparator<Personal> comparatorBySalary = (o1, o2) -> new CompareToBuilder().append(o1.getSalary(), o2.getSalary()).toComparison();
         Comparator<Personal> comparatorByRanked = (o1, o2) -> new CompareToBuilder().append(o1.getRanked(), o2.getRanked()).toComparison();
+        Comparator<Personal> comparatorByName = (o1, o2) -> new CompareToBuilder().append(o1.getName(), o2.getName()).toComparison();
+
+        List<Personal> getSalary = personals.stream().filter( a -> a.getSalary() > 100000).collect(Collectors.toList());
+
+        int getSumSalary = personals.stream().mapToInt(a -> a.getSalary()).sum();
+        List<Integer> getListSalary = personals.stream().map(Personal::getSalary).toList();
+        List<String> getNames = personals.stream().map(Personal::getName).toList();
+
+
+        System.out.println(getListSalary);
+        System.out.println(getNames);
 
         personals.sort(comparatorByAge);
         System.out.println(personals);
@@ -32,6 +41,10 @@ public class Main {
         personals.sort(comparatorByRanked);
         System.out.println(personals);
 
+        personals.sort(comparatorByName);
+        System.out.println(getSalary);
+
+        System.out.println(getSumSalary);
     }
 
 }

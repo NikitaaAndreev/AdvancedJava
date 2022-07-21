@@ -8,9 +8,11 @@ import java.util.Comparator;
 
 @Data
 @AllArgsConstructor(staticName = "of")
-public class Personal  {
+public class Personal {
+
     String name;
     int age;
     int salary;
     int ranked;
+
 }
