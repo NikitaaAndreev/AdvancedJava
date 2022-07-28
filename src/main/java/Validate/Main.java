@@ -1,10 +1,8 @@
-package Validation;
-
-import org.apache.commons.lang3.StringUtils;
+package Validate;
 
 public class Main {
     public static void main(String[] args) {
-        final String str = "abv";
+        final String str = "abbv";
         System.out.println(addBrackets(str));
     }
 

@@ -2,7 +2,7 @@ package Iterator;
 
 import java.util.Iterator;
 
-public class Iterate {
+public class Iterate  {
     public static void main(String[] args) {
         Integer[] arr = new Integer[] {1, 2, 3, 12, 54, 765, 234, 234, 654, 23, 21};
 
