@@ -6,8 +6,10 @@ public class TwoNumbers {
 
         Scanner scan = new Scanner(System.in);
 
-        int n = scan.nextInt();
-        System.out.println(num(n));
+//        int n = scan.nextInt();
+//        System.out.println(num(n));
+        String b = scan.nextLine();
+        System.out.println(nums(b));
 
     }
 
@@ -20,6 +22,17 @@ public class TwoNumbers {
         }
         System.out.println(count);
 
+        return count;
+    }
+
+    public static int nums(String str) {
+        int count = 0;
+        char [] numsChar = str.toCharArray();
+        for(char i : numsChar) {
+            if(i == '2'){
+                count++;
+            }
+        }
         return count;
     }
 
